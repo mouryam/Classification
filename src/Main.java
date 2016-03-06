@@ -19,11 +19,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Main.args = args;
-        if (args.length == 5) {
+        if (args.length == 4) {
             start(args);
         }
         else{
-            System.out.println("Usage: \n\tjava Main [-c/-b] [training_file] [test_data] [class label index] [output_filename]");
+            System.out.println("Usage: \n\tjava Main [-c/-b] [training_file] [test_data] [output_filename]");
             System.exit(-1);
         }
 
@@ -32,16 +32,14 @@ public class Main {
     public static void start(String[] args) throws FileNotFoundException {
         trainingData = convertData(args[1]);
         testData = convertData(args[2]);
-        int classIndex = Integer.parseInt(args[3]);
-
         switch (args[0]) {
             case "-b":
-                bayes = new Bayesian(trainingData, testData, classIndex);
+                bayes = new Bayesian(trainingData, testData, 0);
                 System.out.println("Testing using Bayes Theorem...");
                 bayes.test();
                 break;
             case "-c":
-                c45 = new C45(trainingData, testData, classIndex);
+                c45 = new C45(trainingData, testData, 0);
                 System.out.println("Testing using C4.5...");
                 c45.test();
                 break;
@@ -87,7 +85,7 @@ public class Main {
 
     public static void printOutput(HashMap<char[], Character> classifiedTuples, int numberCorrect, int size) {
         //Print test data results to output file */
-        File f = new File(args[4]);
+        File f = new File(args[3]);
         try {
             PrintWriter pw = new PrintWriter(f);
             double accuracy = ((double)numberCorrect /size)*100;
