@@ -12,11 +12,11 @@ My implementation of Classification uses 4 classes:
 To run the program, first compile the 4 classes, then run Main like so when in the src directory,
 Make sure the training and test data are in src directory:
 
-        $ javac com/company/Main.java
-        $ javac com/company/Bayesian.java
-        $ javac com/company/C45.java
-        $ javac com/company/Tree.java
-        $ java com/company/Main [-c/-b] [training_file] [test_data] [output_filename]
+        $ javac Main.java
+        $ javac Bayesian.java
+        $ javac C45.java
+        $ javac Tree.java
+        $ java Main [-c/-b] [training_file] [test_data] [output_filename]
 
 
 Classification Types:
