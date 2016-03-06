@@ -23,7 +23,7 @@ public class Main {
             start(args);
         }
         else{
-            System.out.println("Usage: \n\tjava Main [-c/-b] [training_file] [test_data] [class label index]");
+            System.out.println("Usage: \n\tjava Main [-c/-b] [training_file] [test_data] [class label index] [output_filename]");
             System.exit(-1);
         }
 
@@ -85,7 +85,7 @@ public class Main {
         return data;
     }
 
-    public static void printAccuracy(HashMap<char[], Character> classifiedTuples, int numberCorrect, int size) {
+    public static void printOutput(HashMap<char[], Character> classifiedTuples, int numberCorrect, int size) {
         //Print test data results to output file */
         File f = new File(args[4]);
         try {
@@ -102,5 +102,7 @@ public class Main {
         catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
+        System.out.println("DONE");
+        System.exit(0);
     }
 }
